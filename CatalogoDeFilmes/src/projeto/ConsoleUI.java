@@ -93,3 +93,101 @@ public class ConsoleUI {
 
         System.out.println("Filme cadastrado com sucesso!");
     }
+
+    private void associarFilmeAtoresDiretor() {
+        System.out.println("Digite o nome do filme ao qual deseja associar atores e diretor:");
+        String nomeFilme = scanner.nextLine();
+
+        Filme filme = catalogo.buscarFilmePorNome(nomeFilme);
+        if (filme == null) {
+            System.out.println("Filme não encontrado.");
+            return;
+        }
+
+        System.out.println("Digite o nome do diretor do filme:");
+        String nomeDiretor = scanner.nextLine();
+        Diretor diretor = catalogo.buscarDiretorPorNome(nomeDiretor);
+        if (diretor == null) {
+            System.out.println("Diretor não encontrado.");
+            return;
+        }
+
+        filme.setDiretor(diretor);
+
+        System.out.println("Digite o número de atores que deseja associar ao filme:");
+        int numAtores = scanner.nextInt();
+        scanner.nextLine();
+
+        for (int i = 0; i < numAtores; i++) {
+            System.out.println("Digite o nome do ator:");
+            String nomeAtor = scanner.nextLine();
+            Ator ator = catalogo.buscarAtorPorNome(nomeAtor);
+            if (ator == null) {
+                System.out.println("Ator não encontrado.");
+                return;
+            }
+            filme.adicionarAtor(ator);
+        }
+
+        System.out.println("Filme associado com sucesso!");
+    }
+
+    private void pesquisarFilme() {
+        System.out.println("Digite o nome do filme que deseja pesquisar:");
+        String nomeFilme = scanner.nextLine().toLowerCase();
+
+        Filme filme = catalogo.buscarFilmePorNome(nomeFilme);
+        if (filme == null) {
+            System.out.println("Filme não encontrado.");
+        } else {
+            System.out.println("\nInformações do Filme:\n");
+
+            System.out.println("Nome: " + filme.getNome());
+            System.out.println("Descrição: " + filme.getDescricao());
+            System.out.println("Data de Lançamento: " + filme.getDataLancamento());
+
+            Diretor diretor = filme.getDiretor();
+            if (diretor != null) {
+                System.out.println("Diretor: " + diretor.getNome() + " (Idade: " + diretor.getIdade() + ")");
+            } else {
+                System.out.println("Diretor não associado a este filme.");
+            }
+
+            System.out.println("Orçamento: " + filme.getOrcamento());
+
+            List<Ator> atores = filme.getAtores();
+            if (!atores.isEmpty()) {
+                System.out.println("Atores associados:");
+                for (Ator ator : atores) {
+                    System.out.println(" - " + ator.getNome() + " (Idade: " + ator.getIdade() + ")");
+                }
+            } else {
+                System.out.println("Não há atores associados a este filme.");
+            }
+
+            System.out.println("\n");
+
+            try {
+                Thread.sleep(20000); //esperar 20 segundos e perguntar se deseja voltar ao menu ou encerrar o programa
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            System.out.println("\nDeseja voltar ao menu ou encerrar as buscas?\n");
+            System.out.println("1 - Voltar ao menu");
+            System.out.println("2 - Encerrar as buscas");
+            int opcao = scanner.nextInt();
+            scanner.nextLine();
+
+            if (opcao == 2) {
+                encerrarPrograma();
+            }
+        }
+    }
+
+
+    private void encerrarPrograma() {
+        System.out.println("Encerrando as buscas, obrigado por utilizar.");
+        System.exit(0);
+    }
+}
