@@ -185,7 +185,6 @@ public class ConsoleUI {
         }
     }
 
-
     private void encerrarPrograma() {
         System.out.println("Encerrando as buscas, obrigado por utilizar.");
         System.exit(0);
