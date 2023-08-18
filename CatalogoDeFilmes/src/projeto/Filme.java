@@ -25,4 +25,56 @@ public class Filme {
         atores = new ArrayList<Ator>();
 
     }
+
+    public void adicionarAtor(Ator ator) {
+        atores.add(ator);
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getDataLancamento() {
+        return dataLancamento;
+    }
+
+    public void setDataLancamento(String dataLancamento) {
+        this.dataLancamento = dataLancamento;
+    }
+
+    public String getOrcamento() {
+        return orcamento;
+    }
+
+    public void setOrcamento(String orcamento) {
+        this.orcamento = orcamento;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Diretor getDiretor() {
+        return diretor;
+    }
+
+    public void setDiretor(Diretor diretor) {
+        this.diretor = diretor;
+    }
+
+    public List<Ator> getAtores() {
+        return atores;
+    }
+
+    public void setAtores(List<Ator> atores) {
+        this.atores = atores;
+    }
 }
