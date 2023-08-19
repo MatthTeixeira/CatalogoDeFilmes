@@ -42,6 +42,10 @@ public class Catalogo {
         return "";
     }
 
+    public List<Filme> getFilmes() {
+        return filmes;
+    }
+
     public Ator buscarAtorPorNome(String nomeAtor) {
         for (Ator ator : atores) {
             if (ator.getNome().equalsIgnoreCase(nomeAtor)) {
