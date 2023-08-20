@@ -47,6 +47,13 @@ public class MainFrame extends JFrame {
                 if (nome == null) {
                     return;
                 }
+                nome = nome.trim();
+
+                if (nome.isEmpty()) {
+                    JOptionPane.showMessageDialog(MainFrame.this, "O nome do filme não pode estar em branco!", "Erro", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
                 String descricao = JOptionPane.showInputDialog(jFrame, "Digite a descrição do filme:");
                 if (descricao == null) {
                     return;
@@ -80,6 +87,13 @@ public class MainFrame extends JFrame {
                 if (nome == null) {
                     return;
                 }
+                nome = nome.trim();
+
+                if (nome.isEmpty()) {
+                    JOptionPane.showMessageDialog(MainFrame.this, "O nome do ator não pode estar em branco!", "Erro", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
                 String idade = JOptionPane.showInputDialog(jFrame, "Digite a idade do ator:");
                 if (idade == null) {
                     return;
@@ -97,6 +111,12 @@ public class MainFrame extends JFrame {
 
                 String nome = JOptionPane.showInputDialog(jFrame, "Digite o nome do diretor:");
                 if (nome == null) {
+                    return;
+                }
+                nome = nome.trim();
+
+                if (nome.isEmpty()) {
+                    JOptionPane.showMessageDialog(MainFrame.this, "O nome do diretor não pode estar em branco!", "Erro", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 String idade = JOptionPane.showInputDialog(jFrame, "Digite a idade do diretor:");
@@ -171,6 +191,12 @@ public class MainFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String nomeFilme = JOptionPane.showInputDialog(jFrame, "Digite o nome do filme que deseja pesquisar:");
                 if (nomeFilme == null) {
+                    return;
+                }
+                nomeFilme = nomeFilme.trim();
+
+                if (nomeFilme.isEmpty()) {
+                    JOptionPane.showMessageDialog(MainFrame.this, "Digite o nome de algum filme!", "Erro", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 Filme filme = catalogo.buscarFilmePorNome(nomeFilme);
